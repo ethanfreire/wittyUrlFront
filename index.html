@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+  </div>
 
-  </body>
+  <h1 class="ui header">WittyUrl</h1>
+
+
+  <form id="makeUserLinks">
+    <div class="field">
+      <label>Please create a User Name</label>
+      <input type="text" name="username" placeholder="Username">
+    </div>
+    <table class="socialMediaUrlTable" style="width:100%">
+      <tr class="tableHeaders">
+        <th>Social Media Sites</th>
+        <th>Please enter Website User Url</th>
+        <th>Your social site Full Url</th>
+      </tr>
+
+      <tr id=1>
+        <td class="dropDownSocialSites">
+          <select id="socialMediaDropDown" name="social_media_options">
+
+          </select>
+        </td>
+        <td class="userSocialSiteUrl">
+          <div class="ui form">
+            <input id="userSocialUrlId" type="text" placeholder="Please fill this entry">
+          </div>
+
+      </td>
+      <td class="fullUrlSocialSite">
+        <div class="field">
+          <input id="fullUrlId" type="text" name="fullUrl" placeholder="">
+        </div>
+      </td>
+    </tr>
+    
+
+  </table>
+  <button type="button" id="newRowButton">Add a New Row</button>
+  <input type="submit" value="Submit"/>
+</form>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
 </html>

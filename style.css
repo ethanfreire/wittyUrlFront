@@ -1,0 +1,14 @@
+.container {
+    background-image: url("https://makeawebsitehub.com/wp-content/uploads/2016/04/social_media.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    width: auto;
+    height: 300px;
+}
+body  {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}

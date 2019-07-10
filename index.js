@@ -18,12 +18,18 @@ function iterateThroughArraySocialMedia(arraySocialMediaOptions){
 }
 
 function addToDropDown(objectSocialMediaOption){
+  
+  let rows = document.querySelector(".socialMediaUrlTable").rows.length
+  let rowParsedd = parseInt(rows)
+  let rowFix = (rowParsedd - 1)
   let socialMediaOption = document.createElement("option")
   socialMediaOption.id = objectSocialMediaOption.id
   socialMediaOption.value = objectSocialMediaOption.url
   socialMediaOption.innerText = objectSocialMediaOption.url
-  let dropDownMenu = document.querySelector("#socialMediaDropDown")
+  let dropDownMenu = document.querySelector(`[data-select-id='${rowFix}']`)
+  // this line needs to be fixed
   dropDownMenu.append(socialMediaOption)
+  
 
 }
 
@@ -47,11 +53,16 @@ function getNewRowButton(){
 function addNewRow(event){
 
   let newRowContainer = document.createElement("tr")
+  // let currentNumberOfRows = currentNumberOfRows()
+
   let currentNumberOfRows = document.querySelector(".socialMediaUrlTable").rows.length
+  
+// debugger
   newRowContainer.id = currentNumberOfRows
 
   let newRowDropDownMenu = document.createElement("td")
   let newRowSelectMenu = document.createElement("select")
+  newRowSelectMenu.dataset.selectId = currentNumberOfRows
   newRowDropDownMenu.append(newRowSelectMenu)
   newRowContainer.append(newRowDropDownMenu)
 
@@ -78,5 +89,14 @@ function addNewRow(event){
   let tableBody = document.querySelector("#makeUserLinks > table > tbody")
   tableBody.append(newRowContainer)
 
-
+  fetchSocialMediaOptions()
+  
 }
+
+
+//// helpers
+
+// function currentNumberOfRows(){
+//   let rows = document.querySelector(".socialMediaUrlTable").rows.length
+//   return rows
+// }

@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded",()=> {
+
   fetchSocialMediaOptions()
-  getUserUrl().addEventListener("change",(event)=>{
-    fillOutFullUrl(event)
-  })
   getNewRowButton().addEventListener("click", (event) => {
     addNewRow(event)
   })
+
+  let submitForm = document.querySelector("#makeUserLinks")
+  submitForm.addEventListener("submit", (event) => {
+    
+    displayWittyUrlCard(event)
+  })
+
 })
 function fetchSocialMediaOptions(){
+
   fetch("http://localhost:3000/api/v1/baselinks")
   .then(resp => resp.json())
   .then(arraySocialMediaOptions => iterateThroughArraySocialMedia(arraySocialMediaOptions))
@@ -18,7 +24,7 @@ function iterateThroughArraySocialMedia(arraySocialMediaOptions){
 }
 
 function addToDropDown(objectSocialMediaOption){
-  
+
   let rows = document.querySelector(".socialMediaUrlTable").rows.length
   let rowParsedd = parseInt(rows)
   let rowFix = (rowParsedd - 1)
@@ -29,20 +35,28 @@ function addToDropDown(objectSocialMediaOption){
   let dropDownMenu = document.querySelector(`[data-select-id='${rowFix}']`)
   // this line needs to be fixed
   dropDownMenu.append(socialMediaOption)
-  
+
 
 }
 
 function getUserUrl(){
-  let userFullUrl = document.querySelector("#userSocialUrlId")
-  return userFullUrl
+  let arrayUserFullUrl = document.querySelectorAll(".userSocialSiteUrl")
+
+  arrayUserFullUrl.forEach((userUrl)=> userUrl.addEventListener("change", (event)=>{
+
+    fillOutFullUrl(event)
+  }))
 }
 
 function fillOutFullUrl(event){
+  //edit to more general
+
   console.log(event.target.value)
-  let fullUrl = document.querySelector(".fullUrlSocialSite")
-  let urlSocialMediaSite =document.querySelector("#socialMediaDropDown").value
-  fullUrl.innerText = urlSocialMediaSite + "/" +  event.target.value
+  // debugger
+  // let fullUrl = document.querySelector(".fullUrlSocialSite")
+  //
+  // let urlSocialMediaSite =document.querySelector("#socialMediaDropDown").value
+  // fullUrl.innerText = urlSocialMediaSite + "/" +  event.target.value
 
 }
 
@@ -53,20 +67,20 @@ function getNewRowButton(){
 function addNewRow(event){
 
   let newRowContainer = document.createElement("tr")
-  // let currentNumberOfRows = currentNumberOfRows()
 
   let currentNumberOfRows = document.querySelector(".socialMediaUrlTable").rows.length
-  
-// debugger
+
   newRowContainer.id = currentNumberOfRows
 
   let newRowDropDownMenu = document.createElement("td")
+  newRowDropDownMenu.classList.add("dropDownSocialSites")
   let newRowSelectMenu = document.createElement("select")
   newRowSelectMenu.dataset.selectId = currentNumberOfRows
   newRowDropDownMenu.append(newRowSelectMenu)
   newRowContainer.append(newRowDropDownMenu)
 
   let newRowUserSocialSite = document.createElement("td")
+  newRowUserSocialSite.classList.add("userSocialSiteUrl")
   let newRowUiForm = document.createElement("div")
   newRowUiForm.classList = "ui form"
   let newRowFormInput = document.createElement("input")
@@ -76,6 +90,7 @@ function addNewRow(event){
   newRowContainer.append(newRowUserSocialSite)
 
   let newRowFullUrl= document.createElement("td")
+  newRowFullUrl.classList.add("fullUrlSocialSite")
   let newRowFullUrlDiv = document.createElement("div")
   newRowFullUrlDiv.classList = "field"
   let newRowFullUrlInput = document.createElement("input")
@@ -90,8 +105,16 @@ function addNewRow(event){
   tableBody.append(newRowContainer)
 
   fetchSocialMediaOptions()
-  
+
 }
+
+function displayWittyUrlCard(event){
+  console.log("submit button event => display card")
+
+}
+
+//get you value on the form for user social Sites
+//document.querySelectorAll(".userSocialSiteUrl")[0].firstElementChild.firstElementChild.value
 
 
 //// helpers

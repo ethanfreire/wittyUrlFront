@@ -25,19 +25,19 @@
         <th>Your social site Full Url</th>
       </tr>
 
-      <tr id=1>
+      <tr id=1 class="formData">
         <td class="dropDownSocialSites">
           <select id="socialMediaDropDown" name="social_media_options" data-select-id="1">
 
           </select>
         </td>
-        <td class="userSocialSiteUrl">
+        <td class="userSocialSiteUrl" data-user-url="1">
           <div class="ui form">
             <input id="userSocialUrlId" type="text" placeholder="Please fill this entry">
           </div>
 
       </td>
-      <td class="fullUrlSocialSite">
+      <td class="fullUrlSocialSite" data-full-url-id="1">
         <div class="field">
           <input id="fullUrlId" type="text" name="fullUrl" placeholder="">
         </div>
@@ -47,7 +47,7 @@
 
   </table>
   <button type="button" id="newRowButton">Add a New Row</button>
-  <input type="submit" value="Submit"/>
+  <input type="submit" id="submitButton" value="Submit"/>
 </form>
 
 <script type="text/javascript" src="index.js"></script>

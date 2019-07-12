@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded",()=> {
 
 function addToBackend(event){
   addUserToBackend(event)
-   setTimeout(displayWittyUrlCard(event), 2000)
+   //
 
 }
 
@@ -53,6 +53,7 @@ function addUrlToBackend(object){
     let dataInputValue = trElement.children[1].children[0].children[0].value
     fetchUserlinkPost(user_id, dataSelectValue, dataInputValue)
   })
+    displayWittyUrlCard(user_id)
 
 
   // let baselink_id = document.("socialMediaDropDown").value
@@ -83,6 +84,7 @@ function addUserToBackend(event){
       .then(response => response.json())
       .then(object => {
         addUrlToBackend(object)
+
       })
       .catch(error => {
           window.alert(error.message);
@@ -172,20 +174,41 @@ function addNewRow(event){
 
 }
 
-function displayWittyUrlCard(event){
+function displayWittyUrlCard(user_id){
   // document.querySelector("#makeUserLinks").innerHTML= ""
 //overlap keeping the form on submit event
 //on overlap display wittyUrl card with value from form
 //add entry with wittyUrl
-  console.log(event.currentTarget)
+  console.log(user_id)
 
   //addDataToOverlay()
 
   on()
+  // debugger
+  setTimeout(()=>{fetchUserOptions(user_id)}, 200)
 
 
 
 }
+
+function fetchUserOptions(user_id){
+  fetch(`http://localhost:3000/api/v1/users/${user_id}`)
+  .then(response => response.json())
+  .then(obj => {
+    displayUserOptions(obj)
+  })
+}
+
+function displayUserOptions(obj){
+  console.log(obj)
+  debugger
+  let modal = document.querySelector('.modal')
+  let userLink = document.createElement("h2")
+  userLink.innerText = `Your url is: wittyurl.com/${obj.username}`
+  modal.append(userLink)
+
+}
+
 function on() {
   document.querySelector(".overlay").style.display = "block";
   // document.querySelector(".modal").style.display = "block";

@@ -187,21 +187,24 @@ function displayWittyUrlCard(event){
 
 }
 function on() {
-document.getElementById("overlay").style.display = "block";
+  document.querySelector(".overlay").style.display = "block";
+  // document.querySelector(".modal").style.display = "block";
+  // document.querySelector(".content").style.display = "block";
+  // document.querySelector(".h1").style.display = "block";
 }
 
-function addDataToOverlay(){
-let displayCardUserName =document.querySelector(".field").firstElementChild.nextElementSibling.value
+// function addDataToOverlay(){
+//   let displayCardUserName =document.querySelector(".field").firstElementChild.nextElementSibling.value
 
 
 
 
-let displayCardUserNameContainer = document.createElement("div")
-displayCardUserNameContainer.classList.add("displayUserName")
-displayCardUserNameContainer.append(displayCardUserName)
-let overlayContainer = document.querySelector("#text")
-overlayContainer.append(displayCardUserNameContainer)
-}
+//   let displayCardUserNameContainer = document.createElement("div")
+//   displayCardUserNameContainer.classList.add("displayUserName")
+// displayCardUserNameContainer.append(displayCardUserName)
+// let overlayContainer = document.querySelector("#text")
+// overlayContainer.append(displayCardUserNameContainer)
+// }
 //get you value on the form for user social Sites
 //document.querySelectorAll(".userSocialSiteUrl")[0].firstElementChild.firstElementChild.value
 

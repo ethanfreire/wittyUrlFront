@@ -22,7 +22,6 @@
       <tr class="tableHeaders">
         <th>Social Media Sites</th>
         <th>Please enter Website User Url</th>
-        <th>Your social site Full Url</th>
       </tr>
 
       <tr id=1 class="formData">
@@ -36,20 +35,28 @@
             <input id="userSocialUrlId" type="text" placeholder="Please fill this entry">
           </div>
 
-      </td>
-      <td class="fullUrlSocialSite" data-full-url-id="1">
-        <div class="field">
-          <input id="fullUrlId" type="text" name="fullUrl" placeholder="">
-        </div>
-      </td>
-    </tr>
+        </td>
+
+      </tr>
+
+
+    </table>
+    <button type="button" id="newRowButton">Add a New Row</button>
+    <input type="submit" id="submitButton" value="Submit"/>
+  </form>
+
+  <div id="overlay">
+    <table style="width:100%">
     
+      <tr>
+        <div id="text" class="wityyUrlField">
+          <label>WityyUrl</label>
+          <input type="text" name="wittyUrlDisplayCard" placeholder="">
+        </div>
+      </tr>
+    </table>
+  </div>
 
-  </table>
-  <button type="button" id="newRowButton">Add a New Row</button>
-  <input type="submit" id="submitButton" value="Submit"/>
-</form>
-
-<script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 </body>
 </html>

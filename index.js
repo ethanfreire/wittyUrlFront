@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded",()=> {
 
 function addToBackend(event){
   addUserToBackend(event)
+   setTimeout(displayWittyUrlCard(event), 2000)
 
 }
 
@@ -43,11 +44,11 @@ function fetchUserlinkPost(user_id, baselink_id, url){
 
 function addUrlToBackend(object){
   let data = document.querySelectorAll(".formData")
-  console.log(data)
+  // console.log(data)
   let user_id = object.id
 
   data.forEach((trElement)=>{
-    debugger
+
     let dataSelectValue = trElement.children[0].children[0].value
     let dataInputValue = trElement.children[1].children[0].children[0].value
     fetchUserlinkPost(user_id, dataSelectValue, dataInputValue)
@@ -118,28 +119,9 @@ function addToDropDown(objectSocialMediaOption){
 
 
 }
-////// url
-function getUserUrl(){
-  let arrayUserFullUrl = document.querySelectorAll(".userSocialSiteUrl")
 
-  arrayUserFullUrl.forEach((userUrl)=> userUrl.addEventListener("change", (event)=>{
 
-    fillOutFullUrl(event)
-  }))
-}
 
-function fillOutFullUrl(event){
-  //edit to more general
-
-  console.log(event.target.value)
-  let rows = document.querySelector(".socialMediaUrlTable").rows.length
-  let rowParsedd = parseInt(rows)
-  let rowFix = (rowParsedd - 1)
-  let fullUrl = document.querySelector(`[data-full-url-id='${rowFix}']`)
-
-  let urlSocialMediaSite =document.querySelector("#socialMediaDropDown").value
-  fullUrl.innerText = urlSocialMediaSite + "/" +  event.target.value
-}
 ////
 function getNewRowButton(){
   let newRow = document.querySelector("#newRowButton")
@@ -169,7 +151,7 @@ function addNewRow(event){
 
   //////
 
-  newRowFormInput.addEventListener("change",  fillOutFullUrl)
+  // newRowFormInput.addEventListener("change",  fillOutFullUrl)
 
 
   /////
@@ -178,15 +160,7 @@ function addNewRow(event){
   newRowUserSocialSite.append(newRowUiForm)
   newRowContainer.append(newRowUserSocialSite)
 
-  let newRowFullUrl= document.createElement("td")
-  newRowFullUrl.dataset.fullUrlId = currentNumberOfRows
-  let newRowFullUrlDiv = document.createElement("div")
-  newRowFullUrlDiv.classList = "field"
-  let newRowFullUrlInput = document.createElement("input")
-  newRowFullUrlInput.placeholder = ""
-  newRowFullUrlDiv.append(newRowFullUrlInput)
-  newRowFullUrl.append(newRowFullUrlDiv)
-  newRowContainer.append(newRowFullUrl)
+
 
 
 
@@ -199,10 +173,35 @@ function addNewRow(event){
 }
 
 function displayWittyUrlCard(event){
-  console.log("submit button event => display card")
+  // document.querySelector("#makeUserLinks").innerHTML= ""
+//overlap keeping the form on submit event
+//on overlap display wittyUrl card with value from form
+//add entry with wittyUrl
+  console.log(event.currentTarget)
+
+  //addDataToOverlay()
+
+  on()
+
+
 
 }
+function on() {
+document.getElementById("overlay").style.display = "block";
+}
 
+function addDataToOverlay(){
+let displayCardUserName =document.querySelector(".field").firstElementChild.nextElementSibling.value
+
+
+
+
+let displayCardUserNameContainer = document.createElement("div")
+displayCardUserNameContainer.classList.add("displayUserName")
+displayCardUserNameContainer.append(displayCardUserName)
+let overlayContainer = document.querySelector("#text")
+overlayContainer.append(displayCardUserNameContainer)
+}
 //get you value on the form for user social Sites
 //document.querySelectorAll(".userSocialSiteUrl")[0].firstElementChild.firstElementChild.value
 

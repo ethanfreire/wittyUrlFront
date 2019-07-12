@@ -15,8 +15,17 @@ form {
 
 
 /* overlay styles, all needed */
+.urlList{
+  display: flex;
+}
+
+li {
+  margin-right: 5vw;
+
+}
+
 .overlay {
-    
+
     position: absolute;
     display: none;
     top: 0;
@@ -33,10 +42,10 @@ form {
     height: 400px;
     line-height: 200px;
     position: fixed;
-    top: 50%; 
+    top: 50%;
     left: 50%;
     margin-top: -100px;
-    margin-left: -150px;
+    margin-left: -250px;
     background-color: #0f9ef1;
     border-radius: 5px;
     text-align: center;

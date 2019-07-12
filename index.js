@@ -201,11 +201,66 @@ function fetchUserOptions(user_id){
 
 function displayUserOptions(obj){
   console.log(obj)
-  debugger
+  // debugger
   let modal = document.querySelector('.modal')
-  let userLink = document.createElement("h2")
-  userLink.innerText = `Your url is: wittyurl.com/${obj.username}`
-  modal.append(userLink)
+  // let userLink = document.createElement("h2")
+  let ul = document.createElement("ol")
+  ul.classList.add("urlList")
+  modal.innerText = `Your url is: wittyurl.com/${obj.username}`
+  modal.append(ul)
+  displayIcon(obj.userlinks, obj.baselinks)
+
+}
+
+function displayIcon(obj1, obj2){
+  obj1.forEach(obj => objDisplay(obj))
+  // debugger
+}
+
+function objDisplay(obj){
+  let ul = document.querySelector(".urlList")
+  let li = document.createElement("li")
+  li.id = obj.baselink_id
+  li.innerText = obj.url
+  if(li.id == 5){
+    let a = document.createElement("a")
+    a.href = `https://www.facebook.com/${obj.url}`
+
+    let facebookDisplay = document.createElement("img")
+    facebookDisplay.src = "https://i.imgur.com/6dXJigE.png"
+    a.append(facebookDisplay)
+    li.append(a)
+    ul.append(li)
+  }
+  else if(li.id == 6){
+    let a = document.createElement("a")
+    a.href = `https://www.twitter.com/${obj.url}`
+    let twitterDisplay = document.createElement("img")
+    twitterDisplay.src = "https://i.imgur.com/TyoMIq5.png"
+    a.append(twitterDisplay)
+    li.append(a)
+    ul.append(li)
+  }
+  else if(li.id == 7){
+    let a = document.createElement("a")
+    a.href = `https://www.instagram.com/${obj.url}`
+    let instaDisplay = document.createElement("img")
+    instaDisplay.src = "https://i.imgur.com/7xojA2Q.png"
+    a.append(instaDisplay)
+    li.append(a)
+    ul.append(li)
+  }
+  else if(li.id == 8){
+    let a = document.createElement("a")
+    a.href = `https://www.tumblr.com/${obj.url}`
+    let tumbDisplay = document.createElement("img")
+    tumbDisplay.src = "https://i.imgur.com/crfRqWG.png"
+    a.append(tumbDisplay)
+    li.append(a)
+    ul.append(li)
+  }
+
+
 
 }
 

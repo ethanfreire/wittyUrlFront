@@ -1,0 +1,1 @@
+Used vanilla javascript to create a single paged application produced a unique url that provide an internet business card of sorts. The business card would contain links to all media pages/websites the user associates with their unique url.
